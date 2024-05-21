@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+
+    <title>Blockchain Demo</title>
+
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+    <!-- Material Kit CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/material-kit@2.0.4/assets/css/material-kit.css">
+    <link rel="stylesheet" href="https://unpkg.com/material-kit@2.0.4/assets/css/material-kit.css">
+    <script src="https://unpkg.com/sjcl@1.0.8/sjcl.js"></script>
+    <link rel="stylesheet" href="./static_src/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <p class="h1 mx-auto mb-5">Blockchain demo</p>
+        </div>
+
+        <div class="row" id="genesis-block">
+                <div class="container" >
+                    <div class="row">
+                        <div class="col-md-auto ml-auto mr-auto">
+                            <form class="form" method="" action="">
+                                <div class="card block" id="genesis-block">
+                                    <div class="card-header card-header-primary">
+                                        <h4 >Genesis block</h4>
+                                        <p>This is the genesis block. It is an origin of the whole future blockchain.</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="block-number">Block # <span></span></div>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">input</i>
+                                            </span>
+                                            <input type="text" class="form-control block--data" placeholder="Stored data">
+                                        </div>
+                                        <div class="form-group label-floating block--nonce">
+                                            <label class="control-label">Nonce</label>
+                                                <input type="number" class="form-control ml-2" />
+                                                <span class="material-icons form-control-feedback">clear</span>
+                                        </div>
+                                        <div class="block--hash this-block mt-3">
+                                            <div class="block--hash-label">Hash</div>
+                                            <div class="block--hash-value px-2 rounded block--hash--pow--true"></div>
+                                        </div>
+                                        <button type="button" class="btn btn-primary block--mine-button mt-3 pull-right">Mine</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row add-new-block-button">
+                        <div class="col-md-auto ml-auto mr-auto">
+                            <button class="btn btn-primary btn-round mx-auto">
+                                <i class="material-icons">add</i> Add next block
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row link-icon" hidden>
+                        <div class="col-md-auto ml-auto mr-auto">
+                            <div class="btn btn-primary btn-fab btn-fab-mini btn-round">
+                                <i class="material-icons">more_vert</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- New block which will be cloned -->
+        <div class="row" id="new-block" hidden>
+            <div class="container" >
+                <div class="row">
+                    <div class="col-md-auto ml-auto mr-auto">
+                        <form class="form" method="" action="">
+                            <div class="card block" id="genesis-block">
+                                <div class="card-body">
+                                    <div class="block-number">Block # <span></span></div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">input</i>
+                                        </span>
+                                        <input type="text" class="form-control block--data" placeholder="Stored data">
+                                    </div>
+                                    <div class="form-group label-floating block--nonce">
+                                        <label class="control-label">Nonce</label>
+                                            <input type="number" class="form-control ml-2" />
+                                            <span class="material-icons form-control-feedback">clear</span>
+                                    </div>
+                                    <div class="block--hash previous-block mt-1">
+                                        <div class="block--hash-label">Hash of the previous block</div>
+                                        <div class="block--hash-value px-2 rounded"></div>
+                                    </div>
+                                    <div class="block--hash this-block mt-3">
+                                        <div class="block--hash-label">Hash</div>
+                                        <div class="block--hash-value px-2 rounded block--hash--pow--true"></div>
+                                    </div>
+                                    <button type="button" class="btn btn-primary block--mine-button mt-3 pull-right">Mine</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row add-new-block-button">
+                    <div class="col-md-auto ml-auto mr-auto">
+                        <button class="btn btn-primary btn-round mx-auto">
+                            <i class="material-icons">add</i> Add next block
+                        </button>
+                    </div>
+                </div>
+                <div class="row link-icon" hidden>
+                    <div class="col-md-auto ml-auto mr-auto">
+                        <div class="btn btn-primary btn-fab btn-fab-mini btn-round">
+                            <i class="material-icons">more_vert</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card card-plain footnotes">
+        <div class="card-header card-header-primary">
+            <p>Copyright © 2024 Victor Chesnay</p>
+        </div>
+    </div>  
+
+    <!--   Core JS Files   -->
+    <script src="https://unpkg.com/material-kit@2.0.4/assets/js/core/jquery.min.js"></script>
+    <script src="https://unpkg.com/material-kit@2.0.4/assets/js/core/popper.min.js"></script>
+
+    <!-- My code -->
+    <script src='./static_src/index.js'></script>
+
+</body>
+</html>
